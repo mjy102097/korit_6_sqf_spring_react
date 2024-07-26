@@ -1,25 +1,27 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 /**
+ * 
  * 
  */
 
 function RegisterSizePage(props) {
-
     const [ size, setSize ] = useState({
-        sizeName: ""
+        sizeName: "",
+        month: ""
     });
 
+    useEffect(() => {
+        console.log(size)
+    }, [size])
+
     const handleInputChange = (e) => {
-        setSize(size => {
-            return {
-                ...size,
-                [e.target.name]: e.target.value
-            }
+        setSize({
+            ...size,
+            [e.target.name]: e.target.value
         });
     }
-
 
     const handleSubmitClick = async () => {
         try {
@@ -30,19 +32,22 @@ function RegisterSizePage(props) {
 
         setSize(size => {
             return {
-                ...size,
                 sizeName: "",
             }
         });
     }
-
 
     return (
         <div>
             <h1>사이즈 등록 페이지</h1>
             <p>
                 <label htmlFor="">사이즈이름</label>
-                <input type="text" name='sizeName' onChange={handleInputChange} value={size.sizeName}/>
+                <input type="text" 
+                    name='sizeName' 
+                    onChange={handleInputChange}
+                    value={size.sizeName}
+                    />
+                <input type="month" name='month' onChange={handleInputChange} value={size.month}/>
             </p>
             <p>
                 <button onClick={handleSubmitClick}>등록</button>

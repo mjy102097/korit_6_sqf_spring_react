@@ -3,30 +3,30 @@ import React from 'react';
 function PromisePage(props) {
 
     const loop = (name) => {
-        // random 0 < 1  0.1234141
-        const random = Math.floor(Math.random() * 10000) + 1;
-        for(let i = 0; i < random; i ++) {
+        // random 0 < 1 0.123234455
+        const random = Math.floor(Math.random() * 100) + 1;
+        for(let i = 0; i < random; i++) {
             console.log(`${name}: ${i}`);
         }
     }
 
-    const testPromise = () => {
+    const testPromise = async () => {
         return new Promise((resolve, reject) => {
-            loop("test1")
+            loop("test1");
             resolve("test1반복 완료");
         });
     }
 
     const testPromise2 = () => {
         return new Promise((resolve, reject) => {
-            loop("test2")
+            loop("test2");
             resolve("test2반복 완료");
         });
     }
 
     const testPromise3 = () => {
         return new Promise((resolve, reject) => {
-            loop("test3")
+            loop("test3");
             resolve("test3반복 완료");
         });
     }
@@ -51,16 +51,17 @@ function PromisePage(props) {
     }
 
     const handleClick1 = () => {
-        testPromise().then(r => { 
+
+        testPromise().then(r => {
             console.log(r);
-            testPromise2().then(r => {
+            testPromise3().then(r => {
                 console.log(r);
-                testPromise3().then(r => {
+                testPromise2().then(r => {
                     console.log(r);
                 });
             });
         });
-    };
+    }
 
     const handleClick2 = async () => {
         const r = await testPromise();
@@ -80,19 +81,20 @@ function PromisePage(props) {
                 console.log(r);
             })
             .catch(e => {
-                console.log(e);
-        });
+                console.error(e);
+            });
         })
         .catch(e => {
-            console.log(e);
+            console.error(e);
             testPromise5(0)
             .then(r => {
                 console.log(r);
             })
             .catch(e => {
-                console.log(e);
+                console.error(e);
             });
-        })
+        });
+
         
     }
 
@@ -100,18 +102,17 @@ function PromisePage(props) {
         try {
             const r = await testPromise4(1);
             console.log(r);
-        } catch(e) {
-            console.log(e);
+        }catch(e) {
+            console.error(e);
         }
 
         try {
             const r = await testPromise5(1);
             console.log(r);
-        } catch(e) {
-            console.log(e);
+        }catch(e) {
+            console.error(e);
         }
     }
-
 
     return (
         <div>

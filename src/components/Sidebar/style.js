@@ -10,7 +10,7 @@ export const layout = css`
 
 export const list = css`
     height: 100%;
-`;
+`
 
 export const listItem = css`
     box-sizing: border-box;
@@ -20,13 +20,13 @@ export const listItem = css`
     padding: 10px 40px;
     transition: all 0.2s ease-in-out;
     &:hover {
-        background-color: #fafafa;     
+        background-color: #fafafa;
     }
     &:active {
         background-color: #eeeeee;
     }
-`;
+`
 
 export const itemText = css`
     margin-left: 10px;
-`
+`;

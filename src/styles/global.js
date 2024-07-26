@@ -26,6 +26,7 @@ export const reset = css`
         border: 1px solid #dbdbdb;
         padding: 5px 10px;
         background-color: #ffffff;
+        cursor: pointer;
         &:hover {
             background-color: #fafafa;
         }

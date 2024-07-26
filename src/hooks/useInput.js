@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 
-function useInput(props) {
+function useInput(setStudent) {
     const [ value, setValue ] = useState("");
 
     const onChange = (e) => {
         setValue(e.target.value);
     }
-    return {value, setValue, onChange};
+
+    const resetValue = () => {
+        setValue("");
+    }
+
+    return { value, resetValue, onChange };
 }
 
 export default useInput;

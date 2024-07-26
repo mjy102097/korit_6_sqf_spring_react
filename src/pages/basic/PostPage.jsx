@@ -7,23 +7,18 @@ function PostPage(props) {
     const departmentInput = useInput();
     const gradeInput = useInput();
     const nameInput = useInput();
-    
-    const teacherSchoolNameInput = useInput();
-    const teacherPhoneInput = useInput();
-    const teacherAdressInput = useInput();
-    const teacherNameInput = useInput();
 
-    const studentHandleSubmit = () => {
+    const handleSubmit = () => {
         const student = {
             schoolName : schoolNameInput.value,
             department : departmentInput.value,
             grade : gradeInput.value,
-            name : nameInput.value
+            name : nameInput.value,
         }
 
         // fetch("http://localhost:8080/basic/student", {
-        //     method: "post",
-        //     headers: {
+        //     method: "post", 
+        //     headers: {  
         //         "Content-Type": "application/json"
         //     },
         //     body: JSON.stringify(student)
@@ -41,68 +36,71 @@ function PostPage(props) {
         });
     }
 
-    const teacherHandleSubmit = () => {
-        const teacher = {
-            teacherSchoolName : teacherSchoolNameInput.value,
-            teacherPhone : teacherPhoneInput.value,
-            teacherAdress : teacherAdressInput.value,
-            teacherName : teacherNameInput.value
-        }
-        axios.post("http://localhost:8080/basic/teacher", teacher)
-        .then(response => {
-            console.log(response.data);
-        }).catch(error => {
-            console.log(error);
-        });
-    }
-
     return (
         <>
             <header>
-                <h1>비동기 데이터 통신(POST)</h1>    
+                <h1>비동기 데이터 통신(POST)</h1>
             </header>
             <main>
                 <h3>학생정보</h3>
                 <p>
                     <label htmlFor="">학교명: </label>
-                    <input type="text" onChange={schoolNameInput.onChange} value={schoolNameInput.value}/>
+                    <input type="text" 
+                        onChange={schoolNameInput.onChange} 
+                        value={schoolNameInput.value} />
                 </p>
                 <p>
                     <label htmlFor="">학과명: </label>
-                    <input type="text" onChange={departmentInput.onChange} value={departmentInput.value}/>
+                    <input type="text" 
+                        onChange={departmentInput.onChange} 
+                        value={departmentInput.value} />
                 </p>
                 <p>
                     <label htmlFor="">학년: </label>
-                    <input type="text" onChange={gradeInput.onChange} value={gradeInput.value}/>
+                    <input type="text" 
+                        onChange={gradeInput.onChange} 
+                        value={gradeInput.value} />
                 </p>
                 <p>
                     <label htmlFor="">이름: </label>
-                    <input type="text" onChange={nameInput.onChange} value={nameInput.value}/>
+                    <input type="text" 
+                        onChange={nameInput.onChange} 
+                        value={nameInput.value} />
                 </p>
                 <p>
-                    <button onClick={studentHandleSubmit}>전송</button>
+                    <button onClick={handleSubmit}>전송</button>
                 </p>
+
                 <h3>선생님정보</h3>
                 <p>
                     <label htmlFor="">학교명: </label>
-                    <input type="text" onChange={teacherSchoolNameInput.onChange} value={teacherSchoolNameInput.value}/>
+                    <input type="text" 
+                        onChange={schoolNameInput.onChange} 
+                        value={schoolNameInput.value} />
                 </p>
                 <p>
                     <label htmlFor="">연락처: </label>
-                    <input type="text" onChange={teacherPhoneInput.onChange} value={teacherPhoneInput.value}/>
+                    <input type="text" 
+                        onChange={departmentInput.onChange} 
+                        value={departmentInput.value} />
                 </p>
                 <p>
                     <label htmlFor="">주소: </label>
-                    <input type="text" onChange={teacherAdressInput.onChange} value={teacherAdressInput.value}/>
+                    <input type="text" 
+                        onChange={gradeInput.onChange} 
+                        value={gradeInput.value} />
                 </p>
                 <p>
                     <label htmlFor="">이름: </label>
-                    <input type="text" onChange={teacherNameInput.onChange} value={teacherNameInput.value}/>
+                    <input type="text" 
+                        onChange={nameInput.onChange} 
+                        value={nameInput.value} />
                 </p>
                 <p>
-                    <button onClick={teacherHandleSubmit}>전송</button>
+                    <button onClick={handleSubmit}>전송</button>
                 </p>
-            </main>
+
+            </main>  
         </>
     );
 }
